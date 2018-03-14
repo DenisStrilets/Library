@@ -1,0 +1,31 @@
+﻿
+@model ViewModel.Models.RedactionViewModel
+@{
+    ViewBag.Title = "Edit Redaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Книга № @Model.RedactionId</h2>
+@using (Html.BeginForm("Edit", "Redaction", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        @Html.HiddenFor(m => m.RedactionId)
+        <p>
+            @Html.LabelFor(m => m.RedactionName, "Redaction Name")
+            <br />
+            @Html.EditorFor(m => m.RedactionName)
+            @Html.ValidationMessageFor(model => model.RedactionName)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Country, "Contry")
+            <br />
+            @Html.EditorFor(m => m.Country)
+            @Html.ValidationMessageFor(model => model.Country)
+        </p>
+        <p><input type="submit" value="Отправить" /></p>
+    </fieldset>
+}

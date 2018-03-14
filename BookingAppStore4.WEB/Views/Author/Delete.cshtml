@@ -1,0 +1,27 @@
+﻿
+@model ViewModel.Models.AuthorViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Remove Author</h2>
+<dl>
+    <dt>Author</dt>
+    <dd>
+        @Html.DisplayFor(model => model.AuthorName)
+    </dd>
+    <dt>Country</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Country)
+    </dd>
+    <dt>Year of Birth</dt>
+    <dd>
+        @Html.DisplayFor(model => model.YearOfBirth)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <input type="submit" value="Delete" />
+}

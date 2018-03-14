@@ -1,0 +1,24 @@
+﻿@model ViewModel.Models.RedactionViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Redaction</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(model => model.RedactionName, "Redaction Name")
+    <br />
+    @Html.EditorFor(model => model.RedactionName)
+    @Html.ValidationMessageFor(model => model.RedactionName)
+    <br /><br />
+    @Html.LabelFor(model => model.Country, "Country")
+    <br />
+    @Html.EditorFor(model => model.Country)
+    @Html.ValidationMessageFor(model => model.Country)
+    <br /><br />
+    <input type="submit" value="Add" />
+}

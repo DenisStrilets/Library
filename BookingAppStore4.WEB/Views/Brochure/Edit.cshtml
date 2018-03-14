@@ -1,0 +1,63 @@
+﻿@model ViewModel.Models.BrochureViewModel
+@{
+    ViewBag.Title = "Edit Brochure";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Брошура № @Model.BrochureId</h2>
+@using (Html.BeginForm("Edit", "Brochure", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        @Html.HiddenFor(m => m.BrochureId)
+        <p>
+            @Html.LabelFor(m => m.Name, "Brochure Name")
+            <br />
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.RedactionId, "Redaction ID")
+            <br />
+            @Html.EditorFor(m => m.RedactionId)
+            @Html.ValidationMessageFor(model => model.RedactionId)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Theme, "Тheme")
+            <br />
+            @Html.EditorFor(m => m.Theme)
+            @Html.ValidationMessageFor(model => model.Theme)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price, "Price")
+            <br />
+            @Html.EditorFor(m => m.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.MinOrdering, "Minimum Order")
+            <br />
+            @Html.EditorFor(m => m.MinOrdering)
+            @Html.ValidationMessageFor(model => model.MinOrdering)
+        </p>
+
+        <p>
+            @Html.LabelFor(m => m.Image, "Image")
+            <br />
+            @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+            
+            <br />           
+            <div class="editor-field">
+                <input type="file" name="uploadImage" />
+            </div>
+
+        </p>
+
+
+        <p><input type="submit" value="Send" /></p>
+    </fieldset>
+}

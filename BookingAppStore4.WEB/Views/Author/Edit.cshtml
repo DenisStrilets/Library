@@ -1,0 +1,36 @@
+﻿
+@model ViewModel.Models.AuthorViewModel
+@{
+    ViewBag.Title = "Edit Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Книга № @Model.AuthorId</h2>
+@using (Html.BeginForm("Edit", "Author", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.HiddenFor(m => m.AuthorId)
+        <p>
+            @Html.LabelFor(m => m.AuthorName, "Author Name")
+            <br />
+            @Html.EditorFor(m => m.AuthorName)
+            @Html.ValidationMessageFor(model => model.AuthorName)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Country, "Country")
+            <br />
+            @Html.EditorFor(m => m.Country)
+            @Html.ValidationMessageFor(model => model.Country)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.YearOfBirth, "Year of Birth")
+            <br />
+            @Html.EditorFor(m => m.YearOfBirth)
+            @Html.ValidationMessageFor(model => model.YearOfBirth)
+        </p>
+        <p><input type="submit" value="Send" /></p>
+    </fieldset>
+}

@@ -1,0 +1,69 @@
+﻿
+@model ViewModel.Models.GournalViewModel
+@{
+    ViewBag.Title = "Edit Gournal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Журнал № @Model.GournalId</h2>
+@using (Html.BeginForm("Edit", "Gournal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        @Html.HiddenFor(m => m.GournalId)
+        <p>
+            @Html.LabelFor(m => m.Name, "Gournal Name")
+            <br />
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Genre, "Genre")
+            <br />
+            @Html.EditorFor(m => m.Genre)
+            @Html.ValidationMessageFor(model => model.Genre)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.RedactionId, "Redaction ID")
+            <br />
+            @Html.EditorFor(m => m.RedactionId)
+            @Html.ValidationMessageFor(model => model.RedactionId)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.MainEditor, "Main Editor")
+            <br />
+            @Html.EditorFor(m => m.MainEditor)
+            @Html.ValidationMessageFor(model => model.MainEditor)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price, "Price")
+            <br />
+            @Html.EditorFor(m => m.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Circulation, "Circulation")
+            <br />
+            @Html.EditorFor(m => m.Circulation)
+            @Html.ValidationMessageFor(model => model.Circulation)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Image, "Image")
+            <br />
+            @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+            <br />
+           
+            <div class="editor-field">
+                <input type="file" name="uploadImage" />
+            </div>
+
+        </p>
+
+        <p><input type="submit" value="Edit" /></p>
+    </fieldset>
+}

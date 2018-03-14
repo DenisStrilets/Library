@@ -1,0 +1,76 @@
+﻿
+@model ViewModel.Models.PublicationViewModel
+@{
+    ViewBag.Title = "Edit Publication";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Публикация № @Model.PublicationId</h2>
+@using (Html.BeginForm("Edit", "Publication", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        @Html.HiddenFor(m => m.PublicationId)
+        <p>
+            @Html.LabelFor(m => m.AuthorId, "Author ID")
+            <br />
+            @Html.EditorFor(m => m.AuthorId)
+            @Html.ValidationMessageFor(model => model.AuthorId)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.RedactionId, "Redaction ID")
+            <br />
+            @Html.EditorFor(m => m.RedactionId)
+            @Html.ValidationMessageFor(model => model.RedactionId)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Name, "Publication Name")
+            <br />
+            @Html.EditorFor(m => m.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Title, "Title")
+            <br />
+            @Html.EditorFor(m => m.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Tome, "Tome")
+            <br />
+            @Html.EditorFor(m => m.Tome)
+            @Html.ValidationMessageFor(model => model.Tome)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Pages, "Page")
+            <br />
+            @Html.EditorFor(m => m.Pages)
+            @Html.ValidationMessageFor(model => model.Pages)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Price, "Price")
+            <br />
+            @Html.EditorFor(m => m.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </p>
+     
+        <p>
+            @Html.LabelFor(m => m.Image, "Image")
+            <br />
+            @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+            <br />
+            <div class="editor-field">
+                <input type="file" name="uploadImage" />
+            </div>
+
+        </p>
+        <p><input type="submit" value="Send" /></p>
+    </fieldset>
+}
+
+

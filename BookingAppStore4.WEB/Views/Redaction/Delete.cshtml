@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ViewModel.Models.RedactionViewModel
+<h2>Delete Redaction</h2>
+<dl>
+    <dt>Redaction Name</dt>
+    <dd>
+        @Html.DisplayFor(model => model.RedactionName)
+    </dd>
+    <dt>Contry</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Country)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}

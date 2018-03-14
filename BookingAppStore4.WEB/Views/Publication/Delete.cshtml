@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ViewModel.Models.PublicationViewModel
+<h2>Delete Publication</h2>
+<dl>
+    <dt>Author</dt>
+    <dd>
+        @Html.DisplayFor(model => model.AuthorName)
+    </dd>
+
+    <dt>Publication Name</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt>Title</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Title)
+    </dd>
+    <dt>Redaction</dt>
+    <dd>
+        @Html.DisplayFor(model => model.RedactionName)
+    </dd>
+    <dt>Tome</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Tome)
+    </dd>
+    <dt>Page</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Pages)
+    </dd>
+    <dt>Price</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Price)
+    </dd>
+   
+    <dt>Image</dt>
+    <dd>
+
+        @Html.Raw("<img style='width:80px; height:60px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.Image) + "\" />")
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}

@@ -1,0 +1,30 @@
+﻿
+ @model ViewModel.Models.AuthorViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Author</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(model => model.AuthorName, "Add author")
+    <br />
+    @Html.EditorFor(model => model.AuthorName)
+    @Html.ValidationMessageFor(model => model.AuthorName)
+    <br /><br />
+    @Html.LabelFor(model => model.Country, "Contry")
+    <br />
+    @Html.EditorFor(model => model.Country)
+    @Html.ValidationMessageFor(model => model.Country)
+    <br /><br />
+    @Html.LabelFor(model => model.YearOfBirth, "Year")
+    <br />
+    @Html.EditorFor(model => model.YearOfBirth)
+    @Html.ValidationMessageFor(model => model.YearOfBirth)
+    <br /><br />
+    <input type="submit" value="Add Author" />
+}
